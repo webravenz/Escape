@@ -1,6 +1,8 @@
 package com.spom.escape.game.perso;
 
-import com.spom.escape.display.ASprite;
+import com.spom.escape.data.SizeConst;
+import com.spom.escape.display.Entity;
+import com.spom.escape.game.Controls;
 import com.spom.escape.utils.AMath;
 
 /**
@@ -8,53 +10,63 @@ import com.spom.escape.utils.AMath;
  * @author Webravenz
  */
 
-class Perso extends ASprite
+class Perso extends Entity
 {
 
-	private static var _SPEEDMAX:Int = 5;
-	private static var _ACCELERATION:Float = 0.5;
+	private static var _SPEEDMAX:Float;
+	private static var _ACCELERATION:Float;
 	
-	private var _targetY:Float;
-	private var _speed:Float = 0;
+	private var _controls:Controls;
 	
-	public function new() 
+	public function new(controls:Controls) 
 	{
+		_controls = controls;
+		
 		super();
 	}
 	
 	private override function _onAddedToStage():Void {
 		
 		graphics.beginFill(0xFF0000);
-		graphics.drawRect( -30, -40, 60, 80);
+		graphics.drawRect( -100, -125, 200, 250);
 		graphics.endFill();
 		
-		x = 80;
-		y = 200;
-		_targetY = y;
+		scaleX = scaleY = SizeConst.SCALE;
+		
+		x = SizeConst.SCREEN_WIDTH / 10;
+		y = SizeConst.SCREEN_HEIGHT / 2;
+		
+		_SPEEDMAX = SizeConst.SCREEN_HEIGHT / 150;
+		_ACCELERATION = _SPEEDMAX / 10;
+		
+		_speedY = 0;
+		_speedX = 0;
 		
 	}
 	
-	public function update():Void {
+	public override function update():Void {
 		
-		if (y < _targetY) {
-			_speed += _ACCELERATION;
-		} else if (y > _targetY) {
-			_speed -= _ACCELERATION;
+		var targetY = _controls.getTargetY();
+		
+		if(targetY != -1) {
+			
+			if (y < targetY) {
+				_speedY += _ACCELERATION;
+			} else if (y > targetY) {
+				_speedY -= _ACCELERATION;
+			}
+			
+			if (Math.abs(y - targetY) <= Math.abs(_speedY) * 5) _speedY /= 2;
+			
+			if (Math.abs(y - targetY) <= 5) _speedY = 0;
 		}
 		
-		_speed = AMath.limite(_speed, -_SPEEDMAX, _SPEEDMAX);
+		_speedY = AMath.limite(_speedY, -_SPEEDMAX, _SPEEDMAX);
 		
-		if (Math.abs(y - _targetY) <= Math.abs(_speed) * 3) _speed /= 2;
 		
-		if (Math.abs(y - _targetY) <= 5) _speed = 0;
+		super.update();
 		
-		y += _speed;
-		
-	}
-	
-	public function setTargetY(target:Float):Void {
-		
-		_targetY = target;
+		y = AMath.limite(y, SizeConst.TOP_LIM, SizeConst.BOTTOM_LIM);
 		
 	}
 	

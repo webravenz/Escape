@@ -1,6 +1,7 @@
 package com.spom.escape;
 
 
+import com.spom.escape.data.SizeConst;
 import com.spom.escape.game.Game;
 import nme.display.Sprite;
 import nme.display.StageAlign;
@@ -29,7 +30,8 @@ class Escape extends Sprite {
 		
 		Lib.current.stage.align = StageAlign.TOP_LEFT;
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
-		Lib.current.stage.frameRate = 60;
+		
+		SizeConst.init(Lib.current.stage);
 		
 		var game:Game = new Game();
 		addChild(game);

@@ -23,11 +23,11 @@ class Game extends ASprite
 	
 	private override function _onAddedToStage():Void {
 		
-		_perso = new Perso();
-		addChild(_perso);
-		
-		_controls = new Controls(stage, _perso);
+		_controls = new Controls(stage);
 		_controls.start();
+		
+		_perso = new Perso(_controls);
+		addChild(_perso);
 		
 		addEventListener(Event.ENTER_FRAME, _update);
 		

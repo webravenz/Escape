@@ -5,7 +5,7 @@
 	<app path="Export" file="Escape" main="com.spom.escape.Escape" />
 	
 	<window width="800" height="600" if="desktop" />
-	<window fps="30" />
+	<window fps="60" orientation="landscape" />
 	
 	<source path="Source" />
 	

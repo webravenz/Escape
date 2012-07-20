@@ -13,14 +13,13 @@ class Controls extends EventDispatcher
 {
 	
 	private var _stage:Stage;
-	private var _perso:Perso;
+	private var _persoTargetY:Float = -1;
 
-	public function new(stage:Stage, perso:Perso) 
+	public function new(stage:Stage) 
 	{
 		super();
 		
 		_stage = stage;
-		_perso = perso;
 		
 	}
 	
@@ -46,7 +45,7 @@ class Controls extends EventDispatcher
 	private function _leftEvent(e:TouchEvent) 
 	{
 		
-		_perso.setTargetY(e.stageY);
+		_persoTargetY = e.stageY;
 		
 	}
 	
@@ -64,6 +63,12 @@ class Controls extends EventDispatcher
 		_stage.removeEventListener(TouchEvent.TOUCH_BEGIN, _onTouchStart);
 		_stage.removeEventListener(TouchEvent.TOUCH_MOVE, _onTouchMove);
 		
+	}
+	
+	// getters / setters
+	
+	public function getTargetY():Float {
+		return _persoTargetY;
 	}
 	
 }

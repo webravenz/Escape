@@ -65,7 +65,7 @@ class ApplicationMain
 				}
 			},
 			0, 0, 
-			30, 
+			60, 
 			0xffffff,
 			(true ? nme.Lib.HARDWARE : 0) |
 			(true ? nme.Lib.RESIZABLE : 0) |
