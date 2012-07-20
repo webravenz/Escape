@@ -46,6 +46,16 @@ class Perso extends Entity
 	
 	public override function update():Void {
 		
+		#if flash
+		// deplacement avec les fleches du clavier
+		
+		if (_controls.getDown())    _speedY += _ACCELERATION;
+		else if (_controls.getUp()) _speedY -= _ACCELERATION;
+		else                        _speedY /= 2;
+		
+		#else
+		// deplacement touch
+		
 		var targetY = _controls.getTargetY();
 		
 		if(targetY != -1) {
@@ -60,6 +70,8 @@ class Perso extends Entity
 			
 			if (Math.abs(y - targetY) <= 5) _speedY = 0;
 		}
+		
+		#end
 		
 		_speedY = AMath.limite(_speedY, -_SPEEDMAX, _SPEEDMAX);
 		
