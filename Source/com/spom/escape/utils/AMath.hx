@@ -14,4 +14,10 @@ class AMath
 		
 	}
 	
+	public static function random(min:Float, max:Float):Float {
+		
+		return Math.random() * (max - min) + min;
+		
+	}
+	
 }

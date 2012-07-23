@@ -1,6 +1,7 @@
 package com.spom.escape.game;
 import com.spom.escape.data.Sheets;
 import com.spom.escape.display.ASprite;
+import com.spom.escape.game.ennemies.EnnemiesContainer;
 import com.spom.escape.game.perso.Perso;
 import nme.events.Event;
 
@@ -13,6 +14,7 @@ class Game extends ASprite
 {
 	
 	private var _perso:Perso;
+	private var _ennemies:EnnemiesContainer;
 	private var _controls:Controls;
 	private var _sheetsToLoad:Array<Dynamic>;
 
@@ -20,7 +22,8 @@ class Game extends ASprite
 	{
 		
 		_sheetsToLoad = [
-			{ folder: 'perso', name: 'perso' }
+			{ folder: 'perso', name: 'perso' },
+			{ folder: 'ennemies', name: 'basic' }
 		];
 		
 		super();
@@ -31,11 +34,17 @@ class Game extends ASprite
 		
 		_loadSheets();
 		
+		// gestion des touches, du touch
 		_controls = new Controls(stage);
 		_controls.start();
 		
+		// personnage
 		_perso = new Perso(_controls);
 		addChild(_perso);
+		
+		// ennemis
+		_ennemies = new EnnemiesContainer();
+		addChild(_ennemies);
 		
 		addEventListener(Event.ENTER_FRAME, _update);
 		
@@ -56,6 +65,7 @@ class Game extends ASprite
 	private function _update(e:Event):Void 
 	{
 		_perso.update();
+		_ennemies.update();
 	}
 	
 	private override function _onRemovedFromStage():Void {

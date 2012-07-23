@@ -33,7 +33,7 @@ class Perso extends Entity
 	
 	private override function _onAddedToStage():Void {
 		
-		scaleX = scaleY = SizeConst.SCALE;
+		super._onAddedToStage();
 		
 		x = SizeConst.SCREEN_WIDTH / 10;
 		y = SizeConst.SCREEN_HEIGHT / 2;
@@ -46,7 +46,7 @@ class Perso extends Entity
 		
 	}
 	
-	public override function update():Void {
+	public override function _update():Void {
 		
 		#if flash
 		// deplacement avec les fleches du clavier
@@ -78,7 +78,7 @@ class Perso extends Entity
 		_speedY = AMath.limite(_speedY, -_SPEEDMAX, _SPEEDMAX);
 		
 		
-		super.update();
+		super._update();
 		
 		y = AMath.limite(y, SizeConst.TOP_LIM, SizeConst.BOTTOM_LIM);
 		

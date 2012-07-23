@@ -3,6 +3,7 @@ import aze.display.SparrowTilesheet;
 import aze.display.TileClip;
 import aze.display.TileLayer;
 import com.spom.escape.data.Sheets;
+import com.spom.escape.data.SizeConst;
 
 /**
  * ...
@@ -12,8 +13,8 @@ import com.spom.escape.data.Sheets;
 class Entity extends ASprite
 {
 	
-	private var _speedX:Float;
-	private var _speedY:Float;
+	private var _speedX:Float = 0;
+	private var _speedY:Float = 0;
 	
 	private var _fps:Int = 8;
 	private var _currentAnim:String = '';
@@ -22,11 +23,28 @@ class Entity extends ASprite
 	private var _sheetLayer:TileLayer;
 	private var _sheetClip:TileClip;
 	
+	private var _displayed:Bool = false;
+	
 	public function new() 
 	{
 		super();
 		
+	}
+	
+	private override function _onAddedToStage():Void {
+		
+		scaleX = scaleY = SizeConst.SCALE;
+		
 		if (_sheetName != null) _initClip();
+		
+		_displayed = true;
+		
+	}
+	
+	private override function _onRemovedFromStage():Void {
+		
+		_displayed = false;
+		
 	}
 	
 	private function _initClip():Void {
@@ -46,6 +64,14 @@ class Entity extends ASprite
 	}
 	
 	public function update():Void {
+		
+		if (_displayed) {
+			_update();
+		}
+		
+	}
+	
+	private function _update():Void {
 		
 		x += _speedX;
 		y += _speedY;

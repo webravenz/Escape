@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:f2d492902dabb018a82ca0e3876fd224$ -->
+<TextureAtlas imagePath="basic.png">
+    <SubTexture name="panda_1" x="2" y="355" width="105" height="103" frameX="-3" frameY="-18" frameWidth="127" frameHeight="121"/>
+    <SubTexture name="panda_2" x="2" y="248" width="109" height="105" frameX="-2" frameY="-14" frameWidth="127" frameHeight="121"/>
+    <SubTexture name="panda_3" x="129" y="2" width="123" height="121" frameX="0" frameY="0" frameWidth="127" frameHeight="121"/>
+    <SubTexture name="panda_4" x="2" y="2" width="125" height="121" frameX="-2" frameY="0" frameWidth="127" frameHeight="121"/>
+    <SubTexture name="panda_5" x="127" y="246" width="119" height="119" frameX="-1" frameY="0" frameWidth="127" frameHeight="121"/>
+    <SubTexture name="panda_6" x="127" y="125" width="123" height="119" frameX="0" frameY="0" frameWidth="127" frameHeight="121"/>
+    <SubTexture name="panda_7" x="2" y="125" width="123" height="121" frameX="-1" frameY="0" frameWidth="127" frameHeight="121"/>
+</TextureAtlas>

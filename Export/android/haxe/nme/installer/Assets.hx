@@ -27,6 +27,10 @@ class Assets {
 		
 		if (!initialized) {
 			
+			resourceNames.set ("assets/sheets/ennemies/basic.png", "assets_sheets_ennemies_basic_png");
+			resourceTypes.set ("assets/sheets/ennemies/basic.png", "image");
+			resourceNames.set ("assets/sheets/ennemies/basic.xml", "assets_sheets_ennemies_basic_xml");
+			resourceTypes.set ("assets/sheets/ennemies/basic.xml", "text");
 			resourceNames.set ("assets/sheets/perso/perso.png", "assets_sheets_perso_perso_png");
 			resourceTypes.set ("assets/sheets/perso/perso.png", "image");
 			resourceNames.set ("assets/sheets/perso/perso.xml", "assets_sheets_perso_perso_xml");
