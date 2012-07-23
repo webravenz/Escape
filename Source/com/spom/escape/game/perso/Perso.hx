@@ -1,9 +1,13 @@
 package com.spom.escape.game.perso;
 
+import aze.display.SparrowTilesheet;
+import aze.display.TileClip;
+import aze.display.TileLayer;
 import com.spom.escape.data.SizeConst;
 import com.spom.escape.display.Entity;
 import com.spom.escape.game.Controls;
 import com.spom.escape.utils.AMath;
+import nme.Assets;
 
 /**
  * ...
@@ -22,14 +26,12 @@ class Perso extends Entity
 	{
 		_controls = controls;
 		
+		_sheetName = 'perso';
+		
 		super();
 	}
 	
 	private override function _onAddedToStage():Void {
-		
-		graphics.beginFill(0xFF0000);
-		graphics.drawRect( -100, -125, 200, 250);
-		graphics.endFill();
 		
 		scaleX = scaleY = SizeConst.SCALE;
 		

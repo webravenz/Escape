@@ -86,6 +86,20 @@ class ApplicationMain
 	{
 		#if nme
 		
+		if (inName == "assets/sheets/perso/perso.png")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/sheets/perso/perso.png");
+			
+		}
+		
+		if (inName == "assets/sheets/perso/perso.xml")
+		{
+			
+			return nme.Assets.getText ("assets/sheets/perso/perso.xml");
+			
+		}
+		
 		#end
 		return null;
 	}

@@ -3,6 +3,7 @@
 -cp Source
 -lib nme
 -lib actuate
+-lib tilelayer
 -D mobile
 -cp Export/android/haxe
 -cpp Export/android/obj

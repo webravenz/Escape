@@ -27,6 +27,10 @@ class Assets {
 		
 		if (!initialized) {
 			
+			resourceNames.set ("assets/sheets/perso/perso.png", "assets_sheets_perso_perso_png");
+			resourceTypes.set ("assets/sheets/perso/perso.png", "image");
+			resourceNames.set ("assets/sheets/perso/perso.xml", "assets_sheets_perso_perso_xml");
+			resourceTypes.set ("assets/sheets/perso/perso.xml", "text");
 			
 			initialized = true;
 			

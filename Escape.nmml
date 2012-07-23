@@ -23,4 +23,6 @@
 	<ndll name="zlib" />
 	<ndll name="nme" haxelib="nme" />
 	
+	<haxelib name="tilelayer" />
+	
 </project>
