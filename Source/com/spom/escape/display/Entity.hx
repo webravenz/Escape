@@ -4,6 +4,7 @@ import aze.display.TileClip;
 import aze.display.TileLayer;
 import com.spom.escape.data.Sheets;
 import com.spom.escape.data.SizeConst;
+import com.spom.escape.events.EntityEvent;
 
 /**
  * ...
@@ -24,6 +25,7 @@ class Entity extends ASprite
 	private var _sheetClip:TileClip;
 	
 	private var _displayed:Bool = false;
+	public var hasMoved:Bool = false;
 	
 	public function new() 
 	{
@@ -58,6 +60,7 @@ class Entity extends ASprite
 			_sheetLayer.addChild(clip);
 			
 			addChild(_sheetLayer.view);
+			_sheetLayer.view.y = -clip.height / 2;
 			
 		}
 		
@@ -77,6 +80,14 @@ class Entity extends ASprite
 		y += _speedY;
 		
 		_sheetLayer.render();
+		
+		if (_speedY != 0) hasMoved = true;
+		
+	}
+	
+	private function _destroy():Void {
+		
+		dispatchEvent(new EntityEvent(EntityEvent.DESTROYED));
 		
 	}
 	

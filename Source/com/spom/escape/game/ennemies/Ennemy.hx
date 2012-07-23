@@ -1,6 +1,5 @@
 package com.spom.escape.game.ennemies;
 import com.spom.escape.display.Entity;
-import com.spom.escape.events.EnnemyEvent;
 
 /**
  * ...
@@ -26,12 +25,6 @@ class Ennemy extends Entity
 			_destroy();
 			
 		}
-		
-	}
-	
-	private function _destroy():Void {
-		
-		dispatchEvent(new EnnemyEvent(EnnemyEvent.DESTROYED));
 		
 	}
 	

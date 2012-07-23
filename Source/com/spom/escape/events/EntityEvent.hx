@@ -6,9 +6,9 @@ import nme.events.Event;
  * @author Webravenz
  */
 
-class EnnemyEvent extends Event
+class EntityEvent extends Event
 {
 	
-	public static var DESTROYED:String = 'ENNEMI_DESTROYED';
+	public static var DESTROYED:String = 'ENTITY_DESTROYED';
 	
 }
