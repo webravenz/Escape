@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:1ef1d42ef792682ef8a3802bc713776b$ -->
+<!-- $TexturePacker:SmartUpdate:6d20535d048eb7e20e51a885a78432a7$ -->
 <TextureAtlas imagePath="perso.png">
-    <SubTexture name="perso_1" x="113" y="246" width="109" height="242" frameX="0" frameY="0" frameWidth="109" frameHeight="244"/>
-    <SubTexture name="perso_2" x="113" y="2" width="109" height="242" frameX="0" frameY="0" frameWidth="109" frameHeight="244"/>
-    <SubTexture name="perso_3" x="2" y="246" width="109" height="242" frameX="0" frameY="0" frameWidth="109" frameHeight="244"/>
-    <SubTexture name="perso_4" x="2" y="2" width="109" height="242" frameX="0" frameY="-2" frameWidth="109" frameHeight="244"/>
+    <SubTexture name="perso_1" x="113" y="2" width="109" height="242" frameX="0" frameY="0" frameWidth="109" frameHeight="244"/>
+    <SubTexture name="perso_2" x="2" y="246" width="109" height="242" frameX="0" frameY="0" frameWidth="109" frameHeight="244"/>
+    <SubTexture name="perso_3" x="2" y="2" width="109" height="242" frameX="0" frameY="0" frameWidth="109" frameHeight="244"/>
+    <SubTexture name="perso_4" x="113" y="246" width="109" height="242" frameX="0" frameY="-2" frameWidth="109" frameHeight="244"/>
 </TextureAtlas>
