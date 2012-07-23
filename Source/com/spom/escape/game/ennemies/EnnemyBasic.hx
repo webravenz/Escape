@@ -18,7 +18,7 @@ class EnnemyBasic extends Ennemy
 		_sheetName = 'basic';
 		_fps = 15;
 		
-		_speedX = -SizeConst.SCREEN_WIDTH / 300;
+		_speedX = -SizeConst.SCREEN_WIDTH / 150;
 		
 	}
 	

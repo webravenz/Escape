@@ -38,7 +38,7 @@ class Perso extends Entity
 		x = SizeConst.SCREEN_WIDTH / 10;
 		y = SizeConst.SCREEN_HEIGHT / 2;
 		
-		_SPEEDMAX = SizeConst.SCREEN_HEIGHT / 150;
+		_SPEEDMAX = SizeConst.SCREEN_HEIGHT / 75;
 		_ACCELERATION = _SPEEDMAX / 10;
 		
 		_speedY = 0;

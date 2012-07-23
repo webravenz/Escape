@@ -5,7 +5,7 @@
 	<app path="Export" file="Escape" main="com.spom.escape.Escape" />
 	
 	<window width="900" height="600" if="flash" />
-	<window fps="60" orientation="landscape" />
+	<window fps="30" orientation="landscape" />
 	
 	<set name="SWF_VERSION" value="10.1" />
 	
