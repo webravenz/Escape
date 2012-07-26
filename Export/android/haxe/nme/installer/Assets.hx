@@ -27,6 +27,8 @@ class Assets {
 		
 		if (!initialized) {
 			
+			resourceNames.set ("assets/decor/decor_1.jpg", "assets_decor_decor_1_jpg");
+			resourceTypes.set ("assets/decor/decor_1.jpg", "image");
 			resourceNames.set ("assets/sheets/ennemies/basic.png", "assets_sheets_ennemies_basic_png");
 			resourceTypes.set ("assets/sheets/ennemies/basic.png", "image");
 			resourceNames.set ("assets/sheets/ennemies/basic.xml", "assets_sheets_ennemies_basic_xml");

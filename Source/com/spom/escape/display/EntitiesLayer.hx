@@ -11,6 +11,7 @@ class EntitiesLayer extends ASprite
 	
 	private var _entities:Array<Entity>;
 	private var _replaceCount:Int = 10;
+	private var _entitiesToDelete:Array<Entity>;
 
 	public function new() 
 	{
@@ -18,22 +19,37 @@ class EntitiesLayer extends ASprite
 		super();
 		
 		_entities = new Array<Entity>();
+		_entitiesToDelete = new Array<Entity>();
 		
 	}
 	
 	public function update():Void {
 		
+		for (entityDel in _entitiesToDelete) {
+			
+			_entities.remove(entityDel);
+			if(contains(entityDel)) removeChild(entityDel);
+			entityDel = null;
+			
+		}
+		
+		_entitiesToDelete = new Array<Entity>();
+		
 		for (entity in _entities) {
 			
-			entity.update();
+			if(entity != null) {
 			
-			if (_replaceCount == 0 && entity.hasMoved) _replace(entity);
-			entity.hasMoved = false;
-			
-			if(entity.getCollideGroup() == 1) {
-				_checkCollisions(entity);
+				entity.update();
 				
-				entity.checkCollisions();
+				if (_replaceCount == 0 && entity.hasMoved) _replace(entity);
+				entity.hasMoved = false;
+				
+				if(entity.getCollideGroup() == 1) {
+					_checkCollisions(entity);
+					
+					entity.checkCollisions();
+				}
+			
 			}
 			
 		}
@@ -77,12 +93,7 @@ class EntitiesLayer extends ASprite
 	private function _entityDestroyed(e:EntityEvent):Void 
 	{
 		
-		var entity:Entity = e.currentTarget;
-		
-		_entities.remove(entity);
-		
-		removeChild(entity);
-		entity = null;
+		_entitiesToDelete.push(e.currentTarget);
 		
 	}
 	

@@ -18,7 +18,7 @@ class EnnemyBasic extends Ennemy
 		_sheetName = 'basic';
 		_fps = 15;
 		
-		_speedX = -SizeConst.SCREEN_WIDTH / 150;
+		_speedX = -SizeConst.SCROLL_SPEED * 2;
 		
 		setHitArea(20, 20, 140, 150);
 		

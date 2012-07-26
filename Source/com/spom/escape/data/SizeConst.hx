@@ -14,6 +14,7 @@ class SizeConst
 	public static var SCALE:Float;
 	public static var BOTTOM_LIM:Float;
 	public static var TOP_LIM:Float;
+	public static var SCROLL_SPEED:Float;
 
 	public function new() 
 	{
@@ -34,6 +35,8 @@ class SizeConst
 		
 		BOTTOM_LIM = SCREEN_HEIGHT * 0.9;
 		TOP_LIM = SCREEN_HEIGHT * 0.3;
+		
+		SCROLL_SPEED = Math.round(SCREEN_WIDTH / 200);
 		
 	}
 	

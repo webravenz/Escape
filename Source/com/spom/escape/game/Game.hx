@@ -2,6 +2,7 @@ package com.spom.escape.game;
 import com.spom.escape.data.Sheets;
 import com.spom.escape.display.ASprite;
 import com.spom.escape.display.EntitiesLayer;
+import com.spom.escape.game.decor.DecorGenerator;
 import com.spom.escape.game.ennemies.EnnemiesGenerator;
 import com.spom.escape.game.perso.Perso;
 import com.spom.escape.game.perso.SkillsManager;
@@ -20,6 +21,7 @@ class Game extends ASprite
 	private var _controls:Controls;
 	private var _skillsManager:SkillsManager;
 	private var _sheetsToLoad:Array<Dynamic>;
+	private var _decor:DecorGenerator;
 	
 	private var _layerObjects:EntitiesLayer;
 
@@ -39,6 +41,11 @@ class Game extends ASprite
 		
 		_loadSheets();
 		
+		// decor
+		_decor = new DecorGenerator();
+		addChild(_decor);
+		
+		// objets / perso / ennemis
 		_layerObjects = new EntitiesLayer();
 		addChild(_layerObjects);
 		
@@ -78,6 +85,7 @@ class Game extends ASprite
 	{
 		_layerObjects.update();
 		_ennemies.update();
+		_decor.update();
 	}
 	
 	private override function _onRemovedFromStage():Void {

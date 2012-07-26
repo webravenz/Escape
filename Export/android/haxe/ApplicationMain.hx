@@ -86,6 +86,13 @@ class ApplicationMain
 	{
 		#if nme
 		
+		if (inName == "assets/decor/decor_1.jpg")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/decor/decor_1.jpg");
+			
+		}
+		
 		if (inName == "assets/sheets/ennemies/basic.png")
 		{
 			
