@@ -20,6 +20,8 @@ class EnnemyBasic extends Ennemy
 		
 		_speedX = -SizeConst.SCREEN_WIDTH / 150;
 		
+		setHitArea(20, 20, 140, 150);
+		
 	}
 	
 	private override function _onAddedToStage():Void {

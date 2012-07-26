@@ -30,6 +30,12 @@ class EntitiesLayer extends ASprite
 			if (_replaceCount == 0 && entity.hasMoved) _replace(entity);
 			entity.hasMoved = false;
 			
+			if(entity.getCollideGroup() == 1) {
+				_checkCollisions(entity);
+				
+				entity.checkCollisions();
+			}
+			
 		}
 		
 		if (_replaceCount == 0) _replaceCount = 10;
@@ -55,6 +61,7 @@ class EntitiesLayer extends ASprite
 		
 	}
 	
+	// ajout d'une entite dans le calque
 	public function addEntity(entity:Entity):Void
 	{
 		
@@ -66,7 +73,7 @@ class EntitiesLayer extends ASprite
 		
 	}
 	
-	// suppression d'un ennemi
+	// suppression d'une entite
 	private function _entityDestroyed(e:EntityEvent):Void 
 	{
 		
@@ -76,6 +83,29 @@ class EntitiesLayer extends ASprite
 		
 		removeChild(entity);
 		entity = null;
+		
+	}
+	
+	// verif des collisions sur une entite
+	private function _checkCollisions(entity:Entity):Void {
+		
+		if (entity.getCollideGroup() != 0) {
+			
+			entity.collides = new Array<Entity>();
+			
+			// verif sur toutes les entites, qui ne sont pas du meme groupe et qui n'ont pas encore été testées
+			for (entityCheck in _entities) {
+				
+				if (entityCheck.getCollideGroup() != 0 && entity.getCollideGroup() != entityCheck.getCollideGroup()) {
+					
+					if (entity.getArea().intersects(entityCheck.getArea())) {
+						entity.collides.push(entityCheck);
+					}
+					
+				}
+				
+			}
+		}
 		
 	}
 	

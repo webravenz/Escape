@@ -8,11 +8,14 @@ import com.spom.escape.display.Entity;
 
 class Ennemy extends Entity
 {
+	
 
 	public function new() 
 	{
 		
 		super();
+		
+		_collideGroup = 2;
 		
 	}
 	

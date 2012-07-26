@@ -1,9 +1,11 @@
 package com.spom.escape.game;
+import com.spom.escape.events.ControlEvent;
 import com.spom.escape.game.perso.Perso;
 import nme.display.Stage;
 import nme.events.EventDispatcher;
 import nme.events.KeyboardEvent;
 import nme.events.TouchEvent;
+import nme.geom.Point;
 import nme.ui.Keyboard;
 
 /**
@@ -18,6 +20,7 @@ class Controls extends EventDispatcher
 	
 	// touch
 	private var _persoTargetY:Float = -1;
+	private var _rightStartPoint:Point;
 	
 	// keyboard
 	private var _goUp:Bool = false;
@@ -37,6 +40,8 @@ class Controls extends EventDispatcher
 	{
 		if (e.stageX < _stage.stageWidth / 2) {
 			_leftEvent(e);
+		} else {
+			_rightStart(e);
 		}
 	}
 	
@@ -44,6 +49,17 @@ class Controls extends EventDispatcher
 	{
 		if (e.stageX < _stage.stageWidth / 2) {
 			_leftEvent(e);
+		} else {
+			
+		}
+	}
+	
+	private function _onTouchEnd(e:TouchEvent):Void 
+	{
+		if (e.stageX < _stage.stageWidth / 2) {
+			
+		} else {
+			_rightEnd(e);
 		}
 	}
 	
@@ -55,6 +71,8 @@ class Controls extends EventDispatcher
 				_goUp = true;
 			case Keyboard.S :
 				_goDown = true;
+			case Keyboard.J :
+				_shoot();
 			
 		}
 	}
@@ -75,10 +93,33 @@ class Controls extends EventDispatcher
 	// events gestion
 	
 	// doit gauche : deplacement perso
-	private function _leftEvent(e:TouchEvent) 
+	private function _leftEvent(e:TouchEvent):Void
 	{
 		
 		_persoTargetY = e.stageY;
+		
+	}
+	
+	// pouce droit start
+	private function _rightStart(e:TouchEvent):Void
+	{
+		_rightStartPoint = new Point(e.stageX, e.stageY);
+	}
+	
+	// pouce droit end
+	private function _rightEnd(e:TouchEvent):Void
+	{
+		if (_rightStartPoint != null) {
+			
+			_shoot();
+			
+		}
+	}
+	
+	// tap a droite : shoot
+	private function _shoot():Void {
+		
+		dispatchEvent(new ControlEvent(ControlEvent.SHOOT));
 		
 	}
 	
@@ -92,6 +133,7 @@ class Controls extends EventDispatcher
 		#else
 		_stage.addEventListener(TouchEvent.TOUCH_BEGIN, _onTouchStart);
 		_stage.addEventListener(TouchEvent.TOUCH_MOVE, _onTouchMove);
+		_stage.addEventListener(TouchEvent.TOUCH_END, _onTouchEnd);
 		#end
 		
 	}
@@ -103,6 +145,7 @@ class Controls extends EventDispatcher
 		#else
 		_stage.removeEventListener(TouchEvent.TOUCH_BEGIN, _onTouchStart);
 		_stage.removeEventListener(TouchEvent.TOUCH_MOVE, _onTouchMove);
+		_stage.removeEventListener(TouchEvent.TOUCH_END, _onTouchEnd);
 		#end
 		
 	}
